@@ -1,0 +1,411 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
+*{
+  margin: 0;
+  padding: 0;
+/*   border: 1px dashed rgb(255, 0, 0); */
+  box-sizing: border-box;
+  font-family: "Roboto", serif;
+}
+
+:root {
+  /* Primary Colors */
+  --primary-black: #292929;
+  --primary-white: #fff;
+
+  /* Accent Colors */
+  --accent-blue: #0197F6;
+  --accent-darkblue: #0057bb;
+  --accent-grey: #9A9A9A;
+  --accent-lightgrey: #D6D6D6;
+}
+
+body {
+  height: 98vh;
+}
+
+header {
+  background-color: var(--primary-black);
+  padding: 10px;
+  height: 10%;
+  align-content: center;
+}
+
+.logo {
+  height: 50px;
+  width: auto;
+}
+
+.main {
+  display: flex;
+  height: 87%;
+}
+
+
+/* --------------------------------------- Aside Section ---------------------------------- */
+
+aside {
+  height: 100%;
+  background-color: var(--accent-lightgrey);
+  width: 18%;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+aside button {
+  font-size: 1.5rem;
+  font-weight: 700;
+  background-color: var(--accent-lightgrey);
+  display: flex;
+  justify-content: left;
+  gap: 10px;
+}
+
+aside li {
+  list-style: none;
+}
+
+.projectBtn {
+  font-size: 1rem;
+  width: 100%;
+  border-radius: 10px;
+}
+
+.projectItemLeftDiv {
+  width: 75%;
+  display: flex;
+  justify-content: left;
+  gap: 5%;
+}
+
+.projectItemRightDiv {
+  width: 20%;
+  display: flex;
+  justify-content: center;
+}
+
+.projectDelete {
+  font-size: 1rem;
+  width: 10%;
+  border: none;
+  margin: 0;
+  padding: 0;
+}
+
+aside h1, aside button, aside p {
+  margin: 10px 0;
+  align-content: center;
+  padding: 10px;
+  border-radius: 15px;
+}
+
+aside h1 {
+  margin-bottom: 0px;
+}
+
+aside button, aside p {
+  cursor: pointer;
+}
+
+aside button:hover, aside p:hover {
+  /* color: var(--accent-blue); */
+  background-color: var(--accent-grey);
+}
+
+/* -------------------------------------- Project Section ----------------------------------- */
+
+
+
+.projectFormSection {
+  display: none;
+  cursor: default;
+  background-color: var(--primary-black);
+  align-items: center;
+}
+
+.projectFormSection:hover {
+  background-color: var(--primary-black);
+}
+
+.projectFormSection i {
+  color: var(--accent-lightgrey);
+}
+
+.projectForm {
+  display: flex;
+  gap: 2%;
+  cursor: default;
+  width: 100%;
+}
+
+.projectInput {
+  height: 100%;
+  font-size: 1rem;
+  font-weight: 700;
+  width: 66%;
+  padding: 5px 8px;
+  border-radius: 10px;
+}
+
+.projectCancelBtn {
+  color: var(--accent-lightgrey);
+  margin: 0px;
+  padding: 0;
+  border-radius: 0;
+  width: 15%;
+  font-weight: 700;
+  font-size: 1rem;
+}
+
+.projectCancelBtn:hover {
+  color: var(--primary-black);
+  border-radius: 10px;
+}
+
+.projectSubmit {
+  width: 15%;
+  font-weight: 700;
+  font-size: 1rem;
+  border-radius: 10px;
+  background-color: var(--accent-darkblue);
+  color: var(--accent-lightgrey);
+}
+
+.projectSubmit:hover {
+  background-color: var(--accent-blue);
+  color: var(--primary-black);
+}
+
+.projectButton {
+  background-color: var(--primary-white);
+  border: none;
+  font-size: 3rem;
+  margin-bottom: 30px;
+}
+
+/* -------------------------------------- Content Section ------------------------------------ */
+
+.inboxSection {
+  display: none;
+}
+
+.todaySection {
+  display: none;
+}
+
+.weekSection {
+  display: none;
+}
+
+.content {
+  width: 82%;
+  height: 100%;
+  padding: 30px 300px;
+}
+
+.content h1 {
+  font-size: 3rem;
+  margin-bottom: 30px;
+}
+
+.contentButton {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  font-size: 1.5rem;
+  padding: 10px;
+  border-radius: 15px;
+  background-color: var(--primary-white);
+  margin-bottom: 10px;
+}
+
+.contentButton:hover {
+  background-color: var(--accent-lightgrey);
+}
+
+.contentButtonLeftDiv {
+  display: flex;
+  justify-content: left;
+  gap: 5%;
+  width: 80%;
+}
+
+.contentButtonLeftDiv i {
+  align-content: center;
+}
+
+.contentButtonRightDiv {
+  display: flex;
+  justify-content: right;
+  gap: 10%;
+  width: 20%;
+}
+
+.contentButtonLeftDiv i:hover, .contentButtonLeftDiv p:hover, .contentButtonRightDiv p:hover, .contentButtonRightDiv i:hover {
+  color: var(--accent-blue);
+  cursor: pointer;
+}
+
+.contentAddButton {
+  display: flex;
+  border: none;
+  background-color: #fff;
+  width: 100%;
+  border-radius: 15%;
+  justify-content: left;
+}
+
+.contentAddButton i{
+  padding: 10px;
+  font-size: 1.5rem;
+  border-radius: 15px;
+  width: 5%;
+  border: 2px solid var(--primary-black);
+}
+
+.contentAddButton i:hover {
+  background-color: var(--accent-lightgrey);
+  color: var(--accent-blue);
+  cursor: pointer;
+}
+
+/* --------------------------------------- Overlay Section ------------------------------------- */
+
+.overlay{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 10;
+  background-color: rgba(0,0,0,0.75); /*dim the background*/
+  display: none;
+}
+
+/* --------------------------- Specific Styles - Modal Section -------------------------------- */
+
+.formSection {
+  z-index: 11;
+  display: none;
+  position: fixed;
+  background-color: var(--primary-black);
+  padding: 15px 20px;
+  border-radius: 15px;
+  font-size: 1.5rem;
+  width: 35%;
+  height: 60%;
+  left: 50%;
+  top: 50%;
+  margin-top: -14.5%;
+  margin-left: -8.5%;
+}
+
+.modalClose {
+  color: var(--accent-lightgrey);
+  display: flex;
+  justify-content: right;
+  font-weight: 700;
+  margin: 0 5px 10px 0;
+}
+
+.modalClose:hover {
+  color: var(--accent-blue);
+  cursor: pointer;
+}
+
+form div {
+  margin: 15px 0;
+  display: flex;
+}
+
+input {
+  cursor: pointer;
+}
+
+.taskInputDiv input, .descriptionInputDiv textarea{
+  font-size: 1.5rem;
+  width: 100%;
+  padding: 10px;
+  border-radius: 15px;
+}
+
+.descriptionInputDiv textarea {
+  height: 190px;
+}
+
+.dateInputDiv {
+  display: flex;
+  justify-content: space-between;
+}
+
+.dateInputDiv label {
+  color: var(--accent-lightgrey);
+  align-content: center;
+}
+
+.dateInputDiv input {
+  font-size: 1.5rem;
+  padding: 10px;
+  border-radius: 15px;
+}
+
+.priorityInputDiv {
+  display: flex;
+  justify-content: space-between;
+  gap: 35%;
+}
+
+.priorityInputDiv label {
+  color: var(--accent-lightgrey);
+  align-content: center
+}
+
+.priorityInputDiv select {
+  font-size: 1.5rem;
+  width: 100%;
+  border-radius: 15px;
+  padding: 10px;
+  text-align: center;
+  background-color: var(--primary-white);
+}
+
+.submitBtnSection {
+  display: flex;
+  justify-content: center;
+  gap: 30%;
+}
+
+.cancelBtn, .submit {
+  font-size: 1.5rem;
+  padding: 10px 20px;
+  border-radius: 15px;
+  background-color: var(--accent-lightgrey);
+  cursor: pointer;
+}
+
+.cancelBtn:hover {
+  background-color: var(--accent-grey);
+}
+
+.submit:hover {
+  background-color: var(--accent-blue);
+}
+
+
+
+
+/* ------------------------------------ Footer Section --------------------------------- */
+
+footer {
+  display: flex;
+  justify-content: center;
+  height: 5%;
+  color: var(--primary-white);
+  background-color: var(--primary-black);
+  font-size: 1.25rem;
+}
+
+footer p {
+  align-content: center;
+}
