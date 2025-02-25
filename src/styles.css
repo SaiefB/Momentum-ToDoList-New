@@ -186,18 +186,6 @@ aside button:hover, aside p:hover {
 
 /* -------------------------------------- Content Section ------------------------------------ */
 
-.inboxSection {
-  display: none;
-}
-
-.todaySection {
-  display: none;
-}
-
-.weekSection {
-  display: none;
-}
-
 .content {
   width: 82%;
   height: 100%;
