@@ -41,7 +41,7 @@ function removeFromArray() {
     console.log("-----removeFromArray function initiated-----");
     console.log("current myTasks array: " + myTasks);
     console.log("removeFromArray function initiated");
-    const taskIndex = parseInt(event.getAttribute("data-index"), 10);
+    const taskIndex = parseInt(event.target.getAttribute("data-index"), 10);
     console.log("taskIndex: ", taskIndex);
     myTasks.splice(taskIndex, 1); // remove task from myTasks array
     console.log("Task removed from myTasks array: ", myTasks);

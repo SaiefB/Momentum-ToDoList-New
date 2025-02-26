@@ -116,8 +116,19 @@ function displayTasks() {
     });
 };
 
+// delete task function
+function deleteTask() {
+    taskItemContainer.addEventListener("click", (event) => {
+        console.log("-----deleteTask function initiated-----");
+        // check if delete icon is clicked
+        if (event.target.classList.contains("fa-trash")) {
+            removeFromArray();
+            displayTasks();
+        };
+    });
+};
 
 
 // Export
-export {addTaskButton, closeButton, cancelButton, submitButton, clearForm, displayTasks};
+export {addTaskButton, closeButton, cancelButton, submitButton, clearForm, displayTasks, deleteTask};
 
