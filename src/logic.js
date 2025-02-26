@@ -47,4 +47,10 @@ function removeFromArray() {
     console.log("Task removed from myTasks array: ", myTasks);
 };
 
+// Project Section
+console.log("-----myProjects array created-----");
+const myProjects = [];
+
+// 
+
 export { myTasks, Task, validateForm, addTask, removeFromArray };
