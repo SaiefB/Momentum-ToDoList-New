@@ -11,6 +11,14 @@ const closeBtn = document.querySelector(".modalClose");
 const modalCancel = document.querySelector(".cancelBtn");
 const submitBtn = document.querySelector(".submit");
 
+const taskInput = document.querySelector(".task");
+const descriptionInput = document.querySelector(".description");
+const dateInput = document.querySelector(".date");
+const priorityInput = document.querySelector(".priority");
+const projectInput = document.getElementById("projectDropDown");
+
+const taskItemContainer = document.querySelector(".taskItemContainer");
+
 // Modal open function
 function addTaskButton() {
     addBtn.onclick = function () {
@@ -44,12 +52,6 @@ function cancelButton() {
     };
 };
 
-const taskInput = document.querySelector(".task");
-const descriptionInput = document.querySelector(".description");
-const dateInput = document.querySelector(".date");
-const priorityInput = document.querySelector(".priority");
-const projectInput = document.getElementById("projectDropDown")
-
 // Submit button function
 function submitButton() {
     submitBtn.onclick = function (event) {
@@ -69,7 +71,7 @@ function submitButton() {
         if (validateForm(task, description, date, priority, project)) {
             addTask(task, description, date, priority, project);
             clearForm();
-            /* displayTasks(); */
+            displayTasks();
         };
 
     };
@@ -84,10 +86,38 @@ function clearForm() {
     priorityInput.value = "";
     projectInput.value = "";
     console.log("Form cleared");
-}
+};
+
+// display all tasks function
+function displayTasks() {
+    console.log("-----displayTasks function initiated-----");
+    taskItemContainer.innerHTML = "";
+    console.log("taskItemContainer innerHTML cleared");
+
+    myTasks.forEach((task, index) => {
+        const taskEntry = `
+        <button class="contentButton" data-index="${index}">
+            <div class="contentButtonLeftDiv">
+                <i class="fa-regular fa-circle"></i>
+                <p>${task.taskTitle}</p>
+                <p>${task.description}</p>
+                <p>${task.priority}</p>
+            </div>
+            <div class="contentButtonRightDiv">
+                <p>${task.dueDate}</p>
+                <p class="delete">
+                    <i class="fa-solid fa-trash" data-index="${index}"></i>
+                </p>
+            </div>
+        </button>
+        `;
+        taskItemContainer.innerHTML += taskEntry;
+        console.log("taskEntry added to taskItemContainer");
+    });
+};
 
 
 
 // Export
-export {addTaskButton, closeButton, cancelButton, submitButton, clearForm};
+export {addTaskButton, closeButton, cancelButton, submitButton, clearForm, displayTasks};
 
