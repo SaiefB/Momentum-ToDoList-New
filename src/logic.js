@@ -31,9 +31,9 @@ function validateForm(task, description, date, priority, project) {
 function addTask(taskTitle, description, dueDate, priority, project) {
     console.log("-----addTask function initiated-----");
     const newTask = new Task(taskTitle, description, dueDate, priority, project);
-    console.log("New Task Created: ", newTask);
+    console.log("newTask Created: ", newTask);
     myTasks.push(newTask);
-    console.log("newTask added to myTasks array: ", myTasks);
+    console.log("newTask added to myTasks array, myTasks array: ", myTasks);
 };
 
 // Function to remove tasks from myTasks array

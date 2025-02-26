@@ -44,11 +44,11 @@ function cancelButton() {
     };
 };
 
-/* const taskInput = document.querySelector(".task");
+const taskInput = document.querySelector(".task");
 const descriptionInput = document.querySelector(".description");
 const dateInput = document.querySelector(".date");
 const priorityInput = document.querySelector(".priority");
-const projectInput = document.querySelector(".projectInput");
+const projectInput = document.getElementById("projectDropDown")
 
 // Submit button function
 function submitButton() {
@@ -60,10 +60,34 @@ function submitButton() {
         console.log("taskModal hidden and overlay removed");
         event.preventDefault();
         const task = taskInput.value;
+        const description = descriptionInput.value;
+        const date = dateInput.value;
+        const priority = priorityInput.value;
+        const project = projectInput.value;
+        console.log("Project selected: ", project);
 
-    }
-} */
+        if (validateForm(task, description, date, priority, project)) {
+            addTask(task, description, date, priority, project);
+            clearForm();
+            /* displayTasks(); */
+        };
+
+    };
+};
+
+// Clear form function
+function clearForm() {
+    console.log("-----clearForm function initiated-----");
+    taskInput.value = "";
+    descriptionInput.value = "";
+    dateInput.value = "";
+    priorityInput.value = "";
+    projectInput.value = "";
+    console.log("Form cleared");
+}
+
+
 
 // Export
-export {addTaskButton, closeButton, cancelButton};
+export {addTaskButton, closeButton, cancelButton, submitButton, clearForm};
 
