@@ -1,7 +1,7 @@
 // DOM.js
 
 //Import
-import { myTasks, Task, validateForm, addTask, removeFromArray } from "./logic";
+import { myTasks, Task, validateForm, addTask, removeFromArray, myProjects, addProject} from "./logic";
 
 // Collect DOM elements
 const addBtn = document.querySelector(".contentAddButton");

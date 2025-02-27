@@ -59,7 +59,32 @@ class Project {
     };
 };
 
+// Function to add projects to myProjects array
+function addProject(projectTitle) {
+    console.log("-----addProject function initiated-----");
+    const newProject = new Project(projectTitle);
+    console.log("newProject Created: ", newProject);
+    myProjects.push(newProject);
+    console.log("newProject added to myProjects array, myProjects array: ", myProjects);
+};
+
+// Function to validate project form
+function validateProjectForm() {
+    console.log("-----validateProjectForm function initiated-----");
+    const projectTitle = projectInput.value;
+    console.log("projectTitle saved: ", projectTitle);
+    if (projectTitle === "") {
+        alert("Please enter a project title");
+        console.log("validateProjectForm check: false");
+        return false;
+    };
+    console.log("validateProjectForm check: true");
+    return true;
+}
 
 
 
-export { myTasks, Task, validateForm, addTask, removeFromArray };
+
+
+
+export { myTasks, Task, validateForm, addTask, removeFromArray, addProject, myProjects };
