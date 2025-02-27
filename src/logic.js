@@ -80,11 +80,17 @@ function validateProjectForm() {
     };
     console.log("validateProjectForm check: true");
     return true;
-}
+};
+
+// Function to remove project from myProjects array
+function removeFromProjectArray() {
+    console.log("-----removeFromProjectArray function initiated-----");
+    console.log("current myProjects array: " + myProjects);
+    const projectIndex = parseInt(event.target.getAttribute("data-index"), 10);
+    console.log("projectIndex: ", projectIndex);
+    myProjects.splice(projectIndex, 1); // remove project from myProjects array
+    console.log("Project removed from myProjects array: ", myProjects);
+};
 
 
-
-
-
-
-export { myTasks, Task, validateForm, addTask, removeFromArray, addProject, myProjects };
+export { myTasks, Task, validateForm, addTask, removeFromArray, addProject, myProjects, validateProjectForm, removeFromProjectArray };
