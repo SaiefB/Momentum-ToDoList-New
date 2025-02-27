@@ -17,6 +17,7 @@ const dateInput = document.querySelector(".date");
 const priorityInput = document.querySelector(".priority");
 const projectInput = document.getElementById("projectDropDown");
 
+const contentSection = document.querySelector(".content")
 const taskItemContainer = document.querySelector(".taskItemContainer");
 
 // Modal open function
@@ -134,6 +135,7 @@ function deleteTask() {
 const projectAddBtn = document.querySelector(".projectAddBtn");
 const projectAddModal = document.querySelector(".projectFormSection");
 const cancelNewProjectBtn = document.querySelector(".projectCancelBtn");
+const projectSubmitBtn = document.querySelector(".projectSubmit");
 
 // Function to open project modal
 function openProjectModal() {
@@ -156,9 +158,34 @@ function closeProjectModal() {
         projectAddModal.style.display = "none";
         console.log("projectAddBtn displayed");
         console.log("projectModal hidden");
-    }
-}
+    };
+};
+
+// Function to submit project
+function submitProject() {
+    projectSubmitBtn.onclick = function(event) {
+        console.log("-----submitProject function initiated-----");
+        console.log("submitProject clicked");
+        event.preventDefault();
+        const project = projectInput.value;
+        console.log("Project selected: ", project);
+
+        if (validateProjectForm(project)) {
+            contentSection.innerHTML = "";
+            console.log("contentSection innerHTML cleared");
+            addProject(project);
+            /* clearProjectForm(); */
+            /* displayProjectAside(); */
+
+            // Call modalProjectSelectOptions after project is added
+            /* setTimeout(() => {
+                modalProjectSelectOptions();
+                console.log("modalProjectSelectOptions updated");
+            }, 0); */
+        };
+    };
+};
 
 // Export
-export {addTaskButton, closeButton, cancelButton, submitButton, clearForm, displayTasks, deleteTask, openProjectModal, closeProjectModal};
+export {addTaskButton, closeButton, cancelButton, submitButton, clearForm, displayTasks, deleteTask, openProjectModal, closeProjectModal, submitProject};
 
