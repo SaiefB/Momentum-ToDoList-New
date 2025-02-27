@@ -128,7 +128,25 @@ function deleteTask() {
     });
 };
 
+/* --------- Project Section ------------ */
+
+// Collect DOM elements
+const projectAddBtn = document.querySelector(".projectAddBtn");
+const projectAddModal = document.querySelector(".projectFormSection");
+
+// Function to open project modal
+function openProjectModal() {
+    projectAddBtn.onclick = function() {
+        console.log("-----openProjectModal function initiated-----");
+        console.log("projectAddBtn clicked");
+        projectAddBtn.style.display = "none";
+        projectAddModal.style.display = "flex";
+        console.log("projectAddBtn hidden");
+        console.log("projectModal displayed");
+        
+    };
+};
 
 // Export
-export {addTaskButton, closeButton, cancelButton, submitButton, clearForm, displayTasks, deleteTask};
+export {addTaskButton, closeButton, cancelButton, submitButton, clearForm, displayTasks, deleteTask, openProjectModal};
 
