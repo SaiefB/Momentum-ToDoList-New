@@ -218,6 +218,19 @@ function displayProjectAside() {
     });
 };
 
+// Function to delete projects
+function deleteProject() {
+    projectList.addEventListener("click", (event) => {
+        console.log("-----deleteProject function initiated-----");
+        // check if delete icon is clicked
+        if (event.target.classList.contains("fa-trash")) {
+            console.log("delete icon clicked");
+            removeFromProjectArray();
+            displayProjectAside(); // update projectList
+        };
+    });
+};
+
 // Export
-export {addTaskButton, closeButton, cancelButton, submitButton, clearForm, displayTasks, deleteTask, openProjectModal, closeProjectModal, submitProject};
+export {addTaskButton, closeButton, cancelButton, submitButton, clearForm, displayTasks, deleteTask, openProjectModal, closeProjectModal, submitProject, deleteProject};
 
