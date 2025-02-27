@@ -51,6 +51,14 @@ function removeFromArray() {
 console.log("-----myProjects array created-----");
 const myProjects = [];
 
-// 
+// Project Class Constructor
+class Project {
+    constructor(projectTitle) {
+        this.projectTitle = projectTitle;
+        console.log("-----Project Constructor Initiated-----");
+    };
+};
+
+
 
 export { myTasks, Task, validateForm, addTask, removeFromArray };
