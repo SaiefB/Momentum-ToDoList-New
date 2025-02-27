@@ -137,6 +137,7 @@ const projectAddModal = document.querySelector(".projectFormSection");
 const cancelNewProjectBtn = document.querySelector(".projectCancelBtn");
 const projectSubmitBtn = document.querySelector(".projectSubmit");
 const projectTitleInput = document.querySelector(".projectTitleInput")
+const projectList = document.querySelector(".projectList");
 
 // Function to open project modal
 function openProjectModal() {
@@ -168,15 +169,13 @@ function submitProject() {
         console.log("-----submitProject function initiated-----");
         console.log("submitProject clicked");
         event.preventDefault();
-        const project = projectInput.value;
+        const project = projectTitleInput.value;
         console.log("Project selected: ", project);
 
         if (validateProjectForm(project)) {
-            contentSection.innerHTML = "";
-            console.log("contentSection innerHTML cleared");
             addProject(project);
-            clearProjectForm();
-            /* displayProjectAside(); */
+            /* clearProjectForm(); */
+            displayProjectAside();
 
             // Call modalProjectSelectOptions after project is added
             /* setTimeout(() => {
@@ -192,6 +191,31 @@ function clearProjectForm() {
     console.log("-----clearProjectForm function initiated-----");
     projectTitleInput.value = "";
     console.log("Project form cleared");
+};
+
+// Function to display projects in aside
+function displayProjectAside() {
+    console.log("-----displayProjectAside function initiated-----");
+    projectList.innerHTML = "";
+    console.log("projectList innerHTML cleared");
+
+    myProjects.forEach((project, index) => {
+        const projectAsideEntry = `
+            <button class="projectBtn projectItem" data-index="${index}">
+                <div class="projectItemLeftDiv">
+                    <i class="fa-solid fa-box-archive"></i>
+                    ${project.projectTitle}
+                </div>
+                <div class="projectItemRightDiv">
+                    <p class="projectDelete">
+                        <i class="fa-solid fa-trash" data-index="${index}"></i>
+                    </p>
+                </div>
+            </button>
+        `;
+        projectList.innerHTML += projectAsideEntry;
+        console.log("projectEntry added to projectList");
+    });
 };
 
 // Export
