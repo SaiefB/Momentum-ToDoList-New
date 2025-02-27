@@ -136,6 +136,7 @@ const projectAddBtn = document.querySelector(".projectAddBtn");
 const projectAddModal = document.querySelector(".projectFormSection");
 const cancelNewProjectBtn = document.querySelector(".projectCancelBtn");
 const projectSubmitBtn = document.querySelector(".projectSubmit");
+const projectTitleInput = document.querySelector(".projectTitleInput")
 
 // Function to open project modal
 function openProjectModal() {
@@ -174,7 +175,7 @@ function submitProject() {
             contentSection.innerHTML = "";
             console.log("contentSection innerHTML cleared");
             addProject(project);
-            /* clearProjectForm(); */
+            clearProjectForm();
             /* displayProjectAside(); */
 
             // Call modalProjectSelectOptions after project is added
@@ -184,6 +185,13 @@ function submitProject() {
             }, 0); */
         };
     };
+};
+
+// Function to clear project form
+function clearProjectForm() {
+    console.log("-----clearProjectForm function initiated-----");
+    projectTitleInput.value = "";
+    console.log("Project form cleared");
 };
 
 // Export

@@ -71,7 +71,7 @@ function addProject(projectTitle) {
 // Function to validate project form
 function validateProjectForm() {
     console.log("-----validateProjectForm function initiated-----");
-    const projectTitle = projectInput.value;
+    const projectTitle = projectTitleInput.value;
     console.log("projectTitle saved: ", projectTitle);
     if (projectTitle === "") {
         alert("Please enter a project title");
