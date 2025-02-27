@@ -1,7 +1,7 @@
 //index.js
 
 import "./styles.css";
-import { addTaskButton, closeButton, cancelButton, submitButton, clearForm, displayTasks, deleteTask, openProjectModal} from "./DOM";
+import { addTaskButton, closeButton, cancelButton, submitButton, clearForm, displayTasks, deleteTask, openProjectModal, closeProjectModal} from "./DOM";
 
 document.addEventListener("DOMContentLoaded", () => {
     console.log("-----DOM Loaded-----");
@@ -13,4 +13,5 @@ document.addEventListener("DOMContentLoaded", () => {
     displayTasks();
     deleteTask();
     openProjectModal();
+    closeProjectModal();
 });

@@ -133,6 +133,7 @@ function deleteTask() {
 // Collect DOM elements
 const projectAddBtn = document.querySelector(".projectAddBtn");
 const projectAddModal = document.querySelector(".projectFormSection");
+const cancelNewProjectBtn = document.querySelector(".projectCancelBtn");
 
 // Function to open project modal
 function openProjectModal() {
@@ -143,10 +144,21 @@ function openProjectModal() {
         projectAddModal.style.display = "flex";
         console.log("projectAddBtn hidden");
         console.log("projectModal displayed");
-        
     };
 };
 
+// Function to close project modal
+function closeProjectModal() {
+    cancelNewProjectBtn.onclick = function() {
+        console.log("-----closeProjectModal function initiated-----");
+        console.log("projectCancelBtn clicked");
+        projectAddBtn.style.display = "block";
+        projectAddModal.style.display = "none";
+        console.log("projectAddBtn displayed");
+        console.log("projectModal hidden");
+    }
+}
+
 // Export
-export {addTaskButton, closeButton, cancelButton, submitButton, clearForm, displayTasks, deleteTask, openProjectModal};
+export {addTaskButton, closeButton, cancelButton, submitButton, clearForm, displayTasks, deleteTask, openProjectModal, closeProjectModal};
 
