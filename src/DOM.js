@@ -254,7 +254,27 @@ function getProjectIndex() { // previously called changeProject
 function displayProjects(projectIndex) {
     console.log("-----displayProjects function initiated-----");
     console.log("projectIndex: ", projectIndex);
-}
+    contentSection.innerHTML = "";
+    console.log("contentSection innerHTML cleared");
+
+    if (projectIndex >= 0 && projectIndex < myProjects.length) {
+        const project = myProjects[projectIndex];
+
+        const projectEntry = `
+        <div class="projectContainer">
+            <h1>${project.projectTitle}</h1>
+            <div class="taskItemContainer"></div>
+            <button class="contentAddButton">
+                <i class="fa-solid fa-plus"></i>
+            </button>
+        </div>
+        `;
+
+        contentSection.innerHTML += projectEntry; // Display project
+        console.log("projectEntry added to contentSection");
+        /* addProjectTask(); */
+    };
+};
 
 // Export
 export {addTaskButton, closeButton, cancelButton, submitButton, clearForm, displayTasks, deleteTask, openProjectModal, closeProjectModal, submitProject, deleteProject, getProjectIndex};
