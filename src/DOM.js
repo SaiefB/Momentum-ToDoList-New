@@ -221,9 +221,9 @@ function displayProjectAside() {
 // Function to delete projects
 function deleteProject() {
     projectList.addEventListener("click", (event) => {
-        console.log("-----deleteProject function initiated-----");
         // check if delete icon is clicked
         if (event.target.classList.contains("fa-trash")) {
+            console.log("-----deleteProject function initiated-----");
             console.log("delete icon clicked");
             removeFromProjectArray();
             displayProjectAside(); // update projectList
@@ -231,6 +231,31 @@ function deleteProject() {
     });
 };
 
+const contentTitle = document.querySelector(".contentTitle");
+
+// Function to change projects
+function getProjectIndex() { // previously called changeProject
+    projectList.addEventListener("click", (event) => {
+        console.log("-----getProjectIndex function initiated-----");
+        console.log("-----projectItem clicked-----");
+
+        const projectBtn = event.target.closest(".projectBtn"); // Find the closest projectBtn
+        if (!projectBtn) return; // If no projectBtn is found, return
+
+        const projectIndex = parseInt(projectBtn.getAttribute("data-index"), 10); // Get the projectIndex
+        console.log("projectIndex: ", projectIndex);
+        if (!isNaN(projectIndex)) { // if projectIndex is a number then...
+            displayProjects(projectIndex); // Display tasks for selected project
+        };
+    });
+};
+
+// Function to display project
+function displayProjects(projectIndex) {
+    console.log("-----displayProjects function initiated-----");
+    console.log("projectIndex: ", projectIndex);
+}
+
 // Export
-export {addTaskButton, closeButton, cancelButton, submitButton, clearForm, displayTasks, deleteTask, openProjectModal, closeProjectModal, submitProject, deleteProject};
+export {addTaskButton, closeButton, cancelButton, submitButton, clearForm, displayTasks, deleteTask, openProjectModal, closeProjectModal, submitProject, deleteProject, getProjectIndex};
 
