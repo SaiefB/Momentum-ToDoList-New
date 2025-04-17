@@ -1,9 +1,9 @@
 // DOM.js
 
 //Import
-import { myTasks, Task, validateForm, addTask, removeFromArray, myProjects, addProject, validateProjectForm, removeFromProjectArray} from "./logic";
+import {Task, addTask, validateTaskForm, myProjects, addProject, validateProjectForm, removeFromProjectArray} from "./logic";
 
-// Collect DOM elements
+// ---------------------------- Collect DOM Elements --------------------------
 const addBtn = document.querySelector(".contentAddButton");
 const modal = document.querySelector(".formSection");
 const overlay =document.querySelector(".overlay");
@@ -20,47 +20,49 @@ const projectInput = document.getElementById("projectDropDown");
 const contentSection = document.querySelector(".content")
 const taskItemContainer = document.querySelector(".taskItemContainer");
 
+// ---------------------------- Task Section ------------------------------------
+
 // Modal open function
-function addTaskButton() {
+function openTaskModal() {
     addBtn.onclick = function () {
-        console.log("-----addTaskButton function initiated-----");
+        console.log("-----openTaskModal function called-----");
         console.log("addTaskButton clicked");
         modal.style.display = "block";
         overlay.style.display = "block";
-        console.log("taskModal displayed and overlay added");
+        console.log("taskModal and overlay displayed");
     };
 };
 
-// modal close function
-function closeButton() {
-    closeBtn.onclick= function () {
-        console.log("-----closeButton function initiated-----");
-        console.log("modalClose button clicked");
+// Modal close function
+function closeTaskModal() {
+    closeBtn.onclick = function () {
+        console.log("-----closeTaskModal function called-----");
+        console.log("closeBtn clicked");
         modal.style.display = "none";
         overlay.style.display = "none";
-        console.log("taskModal hidden and overlay removed");
+        console.log("taskModal and overlay hidden");
     };
 };
 
 // modal cancel function
-function cancelButton() {
+function cancelTaskModal() {
     modalCancel.onclick = function () {
-        console.log("-----cancelButton function initiated-----");
-        console.log("cancel button clicked");
+        console.log("-----cancelTaskModal function called-----");
+        console.log("task cancel button clicked");
         modal.style.display = "none";
         overlay.style.display = "none";
-        console.log("taskModal hidden and overlay removed");
+        console.log("taskModal and overlay hidden");
     };
 };
 
-// Submit button function
-function submitButton() {
+// function to submit taskForm
+function submitTask() {
     submitBtn.onclick = function (event) {
-        console.log("-----submitButton function initiated-----");
+        console.log("-----submitTask function called-----");
         console.log("submitBtn clicked");
         modal.style.display = "none";
         overlay.style.display = "none";
-        console.log("taskModal hidden and overlay removed");
+        console.log("taskModal and overlay hidden");
         event.preventDefault();
         const task = taskInput.value;
         const description = descriptionInput.value;
@@ -69,85 +71,48 @@ function submitButton() {
         const project = projectInput.value;
         console.log("Project selected: ", project);
 
-        if (validateForm(task, description, date, priority, project)) {
+        if (validateTaskForm(task, description, date, priority, project)) {
             addTask(task, description, date, priority, project);
-            clearForm();
-            displayTasks();
+            clearTaskForm();
+            /* displayTasks(); */
         };
-
     };
 };
 
-// Clear form function
-function clearForm() {
-    console.log("-----clearForm function initiated-----");
+// function to clear task form
+function clearTaskForm() {
+    console.log("-----clearTaskForm function called-----");
     taskInput.value = "";
     descriptionInput.value = "";
     dateInput.value = "";
     priorityInput.value = "";
     projectInput.value = "";
-    console.log("Form cleared");
+    console.log("task form cleared");
 };
 
-// display all tasks function
-function displayTasks() {
-    console.log("-----displayTasks function initiated-----");
-    taskItemContainer.innerHTML = "";
-    console.log("taskItemContainer innerHTML cleared");
 
-    myTasks.forEach((task, index) => {
-        const taskEntry = `
-        <button class="contentButton" data-index="${index}">
-            <div class="contentButtonLeftDiv">
-                <i class="fa-regular fa-circle"></i>
-                <p>${task.taskTitle}</p>
-                <p>${task.description}</p>
-                <p>${task.priority}</p>
-            </div>
-            <div class="contentButtonRightDiv">
-                <p>${task.dueDate}</p>
-                <p class="delete">
-                    <i class="fa-solid fa-trash" data-index="${index}"></i>
-                </p>
-            </div>
-        </button>
-        `;
-        taskItemContainer.innerHTML += taskEntry;
-        console.log("taskEntry added to taskItemContainer");
-    });
-};
 
-// delete task function
-function deleteTask() {
-    taskItemContainer.addEventListener("click", (event) => {
-        console.log("-----deleteTask function initiated-----");
-        // check if delete icon is clicked
-        if (event.target.classList.contains("fa-trash")) {
-            removeFromArray();
-            displayTasks();
-        };
-    });
-};
+// ---------------------------- Project Section ------------------------------
 
-/* --------- Project Section ------------ */
-
-// Collect DOM elements
+// Collect Project DOM section
 const projectAddBtn = document.querySelector(".projectAddBtn");
 const projectAddModal = document.querySelector(".projectFormSection");
 const cancelNewProjectBtn = document.querySelector(".projectCancelBtn");
 const projectSubmitBtn = document.querySelector(".projectSubmit");
-const projectTitleInput = document.querySelector(".projectTitleInput")
+const projectTitleInput = document.querySelector(".projectTitleInput");
 const projectList = document.querySelector(".projectList");
+
+const contentTitle = document.querySelector(".contentTitle");
 
 // Function to open project modal
 function openProjectModal() {
-    projectAddBtn.onclick = function() {
+    projectAddBtn.onclick = function () {
         console.log("-----openProjectModal function initiated-----");
         console.log("projectAddBtn clicked");
         projectAddBtn.style.display = "none";
         projectAddModal.style.display = "flex";
         console.log("projectAddBtn hidden");
-        console.log("projectModal displayed");
+        console.log("projectAddModal displayed");
     };
 };
 
@@ -170,18 +135,11 @@ function submitProject() {
         console.log("submitProject clicked");
         event.preventDefault();
         const project = projectTitleInput.value;
-        console.log("Project selected: ", project);
 
         if (validateProjectForm(project)) {
             addProject(project);
-            /* clearProjectForm(); */
+            clearProjectForm();
             displayProjectAside();
-
-            // Call modalProjectSelectOptions after project is added
-            /* setTimeout(() => {
-                modalProjectSelectOptions();
-                console.log("modalProjectSelectOptions updated");
-            }, 0); */
         };
     };
 };
@@ -190,10 +148,10 @@ function submitProject() {
 function clearProjectForm() {
     console.log("-----clearProjectForm function initiated-----");
     projectTitleInput.value = "";
-    console.log("Project form cleared");
+    console.log("project form cleared");
 };
 
-// Function to display projects in aside
+//Function to display projects in the aside
 function displayProjectAside() {
     console.log("-----displayProjectAside function initiated-----");
     projectList.innerHTML = "";
@@ -218,7 +176,7 @@ function displayProjectAside() {
     });
 };
 
-// Function to delete projects
+// function to delete projects
 function deleteProject() {
     projectList.addEventListener("click", (event) => {
         // check if delete icon is clicked
@@ -231,16 +189,14 @@ function deleteProject() {
     });
 };
 
-const contentTitle = document.querySelector(".contentTitle");
-
-// Function to change projects
-function getProjectIndex() { // previously called changeProject
+// function to get project index
+function getProjectIndex() {
     projectList.addEventListener("click", (event) => {
         console.log("-----getProjectIndex function initiated-----");
-        console.log("-----projectItem clicked-----");
+        console.log("projectItem clicked");
 
         const projectBtn = event.target.closest(".projectBtn"); // Find the closest projectBtn
-        if (!projectBtn) return; // If no projectBtn is found, return
+        if (!projectBtn) return; // If no projectBtn is found, return.
 
         const projectIndex = parseInt(projectBtn.getAttribute("data-index"), 10); // Get the projectIndex
         console.log("projectIndex: ", projectIndex);
@@ -263,19 +219,16 @@ function displayProjects(projectIndex) {
         const projectEntry = `
         <div class="projectContainer">
             <h1>${project.projectTitle}</h1>
-            <div class="taskItemContainer"></div>
+            <div class="taskItemContainer"><div>
             <button class="contentAddButton">
                 <i class="fa-solid fa-plus"></i>
             </button>
         </div>
         `;
 
-        contentSection.innerHTML += projectEntry; // Display project
+        contentSection.innerHTML += projectEntry; // display project
         console.log("projectEntry added to contentSection");
-        /* addProjectTask(); */
     };
 };
 
-// Export
-export {addTaskButton, closeButton, cancelButton, submitButton, clearForm, displayTasks, deleteTask, openProjectModal, closeProjectModal, submitProject, deleteProject, getProjectIndex};
-
+export {openTaskModal, closeTaskModal, cancelTaskModal, submitTask, openProjectModal, closeProjectModal, submitProject, clearProjectForm, deleteProject, getProjectIndex};

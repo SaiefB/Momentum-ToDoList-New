@@ -1,80 +1,93 @@
-//Logic.js
+//logic.js
 
-console.log("-----myTasks array created-----");
-const myTasks = [];
+// ---------------------------- Task Section ------------------------------------
 
-//Task Class Constructor
+// Inbox object - to hold all tasks
+const inbox = {};
+
+// Task Class Constructor - creates the task object
 class Task {
-    constructor(taskTitle, description, dueDate, priority, project) {
-        console.log("-----Task Constructor Initiated-----")
+    constructor(taskTitle, taskDescription, taskDueDate, taskPriority, taskProject) {
+        console.log("-----Task Constructor Initiated-----");
         this.taskTitle = taskTitle;
-        this.description = description;
-        this.dueDate = dueDate;
-        this.priority = priority;
-        this.project = project;
-    }
-}
+        this.taskDescription = taskDescription;
+        this.taskDueDate = taskDueDate;
+        this.taskPriority = taskPriority;
+        this.taskProject = taskProject;
+    };
+};
 
-// Validates the form - checks if all fields are entered
-function validateForm(task, description, date, priority, project) {
-    console.log("-----Task validateForm function initiated-----");
+// Form Validation - checks if the form is filled out
+function validateTaskForm(task, description, date, priority, project) {
+    console.log("-----validateTaskForm function initiated-----");
     if (task === "" || description === "" || date === "" || priority === "" || project === "") {
-        alert("Please complete all required fields");
-        console.log("validateForm check: false");
+        alert("Please fill out all fields");
+        console.log("validateTaskForm check: false");
         return false;
     };
-    console.log("validateForm check: true");
+    console.log("validateTaskForm check: true");
     return true;
 };
 
-// Function to add tasks to inbox section
-function addTask(taskTitle, description, dueDate, priority, project) {
+// function to add tasks to project
+function addTask(taskTitle, taskDescription, taskDueDate, taskPriority, taskProject) {
     console.log("-----addTask function initiated-----");
-    const newTask = new Task(taskTitle, description, dueDate, priority, project);
-    console.log("newTask Created: ", newTask);
-    myTasks.push(newTask);
-    console.log("newTask added to myTasks array, myTasks array: ", myTasks);
-};
+    const newTask = new Task(taskTitle, taskDescription, taskDueDate, taskPriority, taskProject);
+    console.log("newTask created: ", newTask);
 
-// Function to remove tasks from myTasks array
-function removeFromArray() {
-    console.log("-----removeFromArray function initiated-----");
-    console.log("current myTasks array: " + myTasks);
-    console.log("removeFromArray function initiated");
-    const taskIndex = parseInt(event.target.getAttribute("data-index"), 10);
-    console.log("taskIndex: ", taskIndex);
-    myTasks.splice(taskIndex, 1); // remove task from myTasks array
-    console.log("Task removed from myTasks array: ", myTasks);
-};
-
-// Project Section
-console.log("-----myProjects array created-----");
-const myProjects = [];
-
-// Project Class Constructor
-class Project {
-    constructor(projectTitle) {
-        this.projectTitle = projectTitle;
-        console.log("-----Project Constructor Initiated-----");
+    // find the correct project
+    const projectIndex = myProjects.findIndex(project => project.projectTitle === taskProject);
+    console.log("projectIndex: ", projectIndex);
+    if (projectIndex !== -1 && myProjects.length > 0) {
+        myProjects[projectIndex].tasks.push(newTask);
+        console.log("newTask added to project: ", myProjects[projectIndex]);
     };
 };
 
-// Function to add projects to myProjects array
+/* function addTask(taskTitle, taskDescription, taskDueDate, taskPriority, taskProject) {
+    console.log("-----addTask function initiated-----");
+    const newTask = new Task(taskTitle, taskDescription, taskDueDate, taskPriority, taskProject);
+    console.log("newTask created: ", newTask);
+    myTasks.push(newTask);
+    console.log("newTask added to myTasks array: ", myTasks);
+} */
+
+
+// function to add a task to the inbox array
+
+// ----------------------------- Project Section -------------------------------
+
+// Project Array
+console.log("-----myProject array created-----");
+const myProjects = [];
+
+//Project Class Constructor
+class Project {
+    constructor(projectTitle) {
+        this.projectTitle = projectTitle;
+        console.log("-----Project constructor initiated-----");
+        this.tasks = [];
+        console.log(`Project Title: ${this.projectTitle}`);
+        console.log(`Project Tasks: ${this.tasks}`);
+    };
+};
+
+// Function to add a project to myProjects array
 function addProject(projectTitle) {
     console.log("-----addProject function initiated-----");
     const newProject = new Project(projectTitle);
-    console.log("newProject Created: ", newProject);
+    console.log("newProject created: ", newProject);
     myProjects.push(newProject);
     console.log("newProject added to myProjects array, myProjects array: ", myProjects);
 };
 
-// Function to validate project form
+// Project form validation - checks if the project form is filled out
 function validateProjectForm() {
     console.log("-----validateProjectForm function initiated-----");
     const projectTitle = projectTitleInput.value;
     console.log("projectTitle saved: ", projectTitle);
     if (projectTitle === "") {
-        alert("Please enter a project title");
+        alert("Please enter a project title.");
         console.log("validateProjectForm check: false");
         return false;
     };
@@ -82,15 +95,16 @@ function validateProjectForm() {
     return true;
 };
 
-// Function to remove project from myProjects array
+//function to remove projects from myProject array
 function removeFromProjectArray() {
     console.log("-----removeFromProjectArray function initiated-----");
-    console.log("current myProjects array: " + myProjects);
+    console.log("current myProjects array: ", myProjects);
     const projectIndex = parseInt(event.target.getAttribute("data-index"), 10);
     console.log("projectIndex: ", projectIndex);
-    myProjects.splice(projectIndex, 1); // remove project from myProjects array
-    console.log("Project removed from myProjects array: ", myProjects);
+    myProjects.splice(projectIndex, 1);  // remove project from myProjects array
+    console.log("project removed from myProjects array: ", myProjects);
 };
 
 
-export { myTasks, Task, validateForm, addTask, removeFromArray, addProject, myProjects, validateProjectForm, removeFromProjectArray };
+
+export { Task, addTask, validateTaskForm, myProjects, addProject, validateProjectForm, removeFromProjectArray}
